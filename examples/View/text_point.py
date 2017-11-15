@@ -14,4 +14,9 @@ import sublime_plugin
 class ViewTextPointCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        pass
+        region = self.view.sel()[0]
+        print(region)
+        row, col = self.view.rowcol(region.b)
+        print('row : ' + str(row) + ', col : ' + str(col))
+        p = self.view.text_point(row, col)
+        print('cal point from row, col :' + str(p))
